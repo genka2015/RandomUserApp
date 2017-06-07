@@ -1,10 +1,15 @@
 
 package com.example.android.randomuserapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result{
 
     @SerializedName("gender")
     @Expose
@@ -156,4 +161,5 @@ public class Result {
                 ", nat='" + nat + '\'' +
                 '}';
     }
+
 }

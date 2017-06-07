@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView responseName;
     TextView responseAddress;
     TextView responseEmail;
-    private ArrayList <Result> userList;
+    private ArrayList <User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,14 +93,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(response.isSuccessful()){
                     Message msg = handler.obtainMessage();
                     Bundle data = new Bundle();
+                    String currentName = "";
+                    String currentAddress = "";
+                    String currentEmail = "";
 
                     RandomAPI randomAPI = response.body();
                     for(Result result:randomAPI.getResults()){
                         Log.d(TAG, "onResponse: Name is " + result.getName());
-                        userList.add(result);
-                        data.putString(USER_NAME, result.getName().getTitle() + " " + result.getName().getFirst() + " " + result.getName().getLast());
-                        data.putString(USER_ADDRESS, result.getLocation().getStreet() + " " + result.getLocation().getCity() + " " + result.getLocation().getState() + " " + Integer.toString(result.getLocation().getPostcode()));
-                        data.putString(USER_EMAIL, result.getEmail());
+
+                        currentName = result.getName().getTitle() + " " + result.getName().getFirst() + " " + result.getName().getLast();
+                        currentAddress = result.getLocation().getStreet() + " " + result.getLocation().getCity() + " " + result.getLocation().getState() + " " + Integer.toString(result.getLocation().getPostcode());
+                        currentEmail = result.getEmail();
+                        data.putString(USER_NAME, currentName);
+                        data.putString(USER_ADDRESS, currentAddress);
+                        data.putString(USER_EMAIL, currentEmail);
+                        User currentUser = new User(currentName,currentAddress,currentEmail);
+                        userList.add(currentUser);
+
                     }
                     msg.setData(data);
                     handler.sendMessage(msg);
@@ -125,17 +134,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.list_view_bt:
                 // go to List View
                 Intent listViewIntent = new Intent(MainActivity.this,ListViewActivity.class);
-//                Bundle listBundle = new Bundle();
-//                listBundle.putSerializable("list", userList);
-//                listViewIntent.putExtra("data",listBundle);
+
+                listViewIntent.putParcelableArrayListExtra("data",userList);
                 startActivity(listViewIntent);
                 break;
             case R.id.recycler_view_bt:
                 // go to Recycler View
                 Intent recyclerViewIntent = new Intent(MainActivity.this, RecyclerViewActivity.class);
-//                Bundle recyclerBundle = new Bundle();
-//                recyclerBundle.putSerializable("list", userList);
-//                recyclerViewIntent.putExtra("data",recyclerBundle);
+                recyclerViewIntent.putParcelableArrayListExtra("data",userList);
                 startActivity(recyclerViewIntent);
                 break;
         }

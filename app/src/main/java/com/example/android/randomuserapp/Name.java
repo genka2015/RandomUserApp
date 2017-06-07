@@ -4,7 +4,8 @@ package com.example.android.randomuserapp;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Name {
+
+public class Name{
 
     @SerializedName("title")
     @Expose
