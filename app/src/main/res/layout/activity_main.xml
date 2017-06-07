@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context="com.example.android.randomuserapp.MainActivity">
+
+    <TextView
+        android:id="@+id/result_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:text="@string/lbl_result_name"/>
+    <TextView
+        android:id="@+id/result_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:text="@string/lbl_result_address"/>
+    <TextView
+        android:id="@+id/result_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:text="@string/lbl_result_email"/>
+
+    <Button
+        android:id="@+id/get_user_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Get User"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/list_view_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="LIST VIEW"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/recycler_view_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="RECYCLER VIEW"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:textSize="20sp"/>
+
+</LinearLayout>
